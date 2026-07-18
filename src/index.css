@@ -1,7 +1,7 @@
 :root {
   --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
+  --text-h: #333333;
+  --bg: #E0D8D0;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -71,6 +71,7 @@ h2 {
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
+  text-align: center;
 }
 
 h1 {
@@ -81,12 +82,13 @@ h1 {
     font-size: 36px;
     margin: 20px 0;
   }
+  
 }
 h2 {
   font-size: 24px;
   line-height: 118%;
   letter-spacing: -0.24px;
-  margin: 0 0 8px;
+  margin: 0 0 16px;
   @media (max-width: 1024px) {
     font-size: 20px;
   }
@@ -108,4 +110,41 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+div{
+  margin: 0 auto;
+}
+
+label {
+  display: block;  改行させて入力欄の上に置く
+  text-align: left;
+  margin: 12px 0 4px;
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+
+.box_theme{
+  display: flex;
+}
+
+
+
+.box_label{
+
+}
+
+
+
+.btn_generate{
+  margin: 16px 16px 8px;
+}
+
+
+
+/* 生成コンテンツ */
+.generated_content_list{
+  margin: 24px;
+
 }

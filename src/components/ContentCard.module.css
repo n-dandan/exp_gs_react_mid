@@ -1,8 +1,8 @@
 .card {
   padding: 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #B85C5C;
   border-radius: 10px;
-  background: #ffffff;
+  background: #eee;
   margin-bottom: 12px;
 }
 .head {
@@ -16,7 +16,17 @@
   font-size: 12px;
   padding: 2px 8px;
   border-radius: 999px;
-  background: #eef2ff;
-  color: #4f46e5;
+  background: #ffffff;
+  color: #B85C5C;
 }
-.body { margin: 0; white-space: pre-wrap; color: #374151; }
+.body { margin: 0; white-space: pre-wrap; color: #333; }
+
+h3{
+  color: #B85C5C;
+}
+
+/* #1A1A1A, 
+#E0D8D0,
+ #B85C5C,
+  #FFFFFF,
+   #333333 */
