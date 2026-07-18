@@ -33,6 +33,12 @@ function App() {
       }),
     });
 
+    if (!res.ok) {
+      console.error("エラー " + res.status + "：" + (data.error?.message || "不明"));
+      setLoading(false);
+      return;
+    }
+
     const data = await res.json();
     const text = data.choices[0].message.content;
     const newItem = {
@@ -43,12 +49,6 @@ function App() {
     };
 
     console.log("status:", res.status, "body:", data);
-
-    if (!res.ok) {
-      console.error("エラー " + res.status + "：" + (data.error?.message || "不明"));
-      setLoading(false);
-      return;
-    }
     setContents([newItem, ...contents]);
     setLoading(false);
   }
@@ -98,7 +98,7 @@ function App() {
               <option value="スペイン語">Spanish</option>
               <option value="中国語（簡体字）">Chinese (Simplified)</option>
               <option value="中国語（繁体字）">Chinese (Traditional)</option>
-              <option value="日本語">Japnese</option>
+              <option value="日本語">Japanese</option>
             </select>
           </div>
         </div>
