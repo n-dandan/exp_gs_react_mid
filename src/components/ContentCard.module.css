@@ -3,7 +3,8 @@
   border: 1px solid #B85C5C;
   border-radius: 10px;
   background: #eee;
-  margin-bottom: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 .head {
   display: flex;
@@ -24,6 +25,13 @@
 h3{
   color: #B85C5C;
 }
+
+/* ステータス別の色（.status より後ろに書くこと） */
+.draft     { background: #e5e7eb; color: #4b5563; }  /* 下書き */
+.done      { background: #dbeafe; color: #1d4ed8; }  /* 完成 */
+.published { background: #dcfce7; color: #15803d; }  /* 公開*/
+
+
 
 /* #1A1A1A, 
 #E0D8D0,

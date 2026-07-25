@@ -3,15 +3,17 @@ import { useState } from "react";
 function GeneratePage({ onAdd }) {
   const [name, setName] = useState("");
   const [feature, setFeature] = useState("");
-  const [tone, setTone] = useState("やさしい");
+  const [purpose, setTone] = useState("やさしい");
   const [loading, setLoading] = useState(false);
 
   async function handleGenerate() {
     setLoading(true);
 
     const prompt = `あなたはECサイトのコピーライターです。
-        次の和菓子の説明文を、${language}で、200文字程度で書いてください。
-        商品名:${wagashi}`;
+        次の和菓子の商品説明文を特徴${feature}と用途:${purpose}を踏まえて、
+        日本語、英語、スペイン語、中国語（簡体字）、中国語（繁体字）、韓国語で、
+        用途に合わせて書いてください。
+        商品名:${name}`;
 
 //     const prompt = `あなたはECサイトのコピーライターです。
 // 次の商品の説明文を、${tone}トーンで、100文字程度で書いてください。
@@ -60,11 +62,11 @@ function GeneratePage({ onAdd }) {
       <label>特徴（カンマ区切りでOK）</label>
       <input value={feature} onChange={(e) => setFeature(e.target.value)} placeholder="例: 夏用・軽い・白" />
 
-      <label>トーン</label>
-      <select value={tone} onChange={(e) => setTone(e.target.value)}>
-        <option value="やさしい">やさしい</option>
-        <option value="かっこいい">かっこいい</option>
-        <option value="ていねい">ていねい</option>
+      <label>用途</label>
+      <select value={purpose} onChange={(e) => setTone(e.target.value)}>
+        <option value="ECサイト説明文">ECサイト説明文</option>
+        <option value="SNS用投稿文">SNS用投稿文</option>
+        <option value="店頭POP">店頭POP</option>
       </select>
 
       <button onClick={handleGenerate} disabled={loading}>

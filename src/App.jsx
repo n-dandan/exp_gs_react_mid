@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import DashboardPage from "./pages/DashboardPage";
 import GeneratePage from "./pages/GeneratePage";
 import EditPage from "./pages/EditPage";
+import "./App.css"; 
 
 function App() {
-  const [contents, setContents] = useState([]);
+  // ① 起動時：localStorage から読み込む（無ければ空配列）
+  const [contents, setContents] = useState(() => {
+    const saved = localStorage.getItem("contents");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // ② contents が変わるたび：localStorage に保存する
+  useEffect(() => {
+    localStorage.setItem("contents", JSON.stringify(contents));
+  }, [contents]);
 
   function addContent(newItem) {
     setContents([newItem, ...contents]);
@@ -21,7 +31,9 @@ function App() {
 
   return (
     <div style={{ maxWidth: 640, margin: "0 auto", padding: 24 }}>
-      <h1>AI ショップ管理画面</h1>
+      <div className="title">
+        <h1>インバウンド向け和菓子</h1>
+      </div>
       <NavBar />
 
       <Routes>
