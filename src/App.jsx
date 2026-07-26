@@ -32,7 +32,9 @@ function App() {
 
   return (
     <div style={{ maxWidth: 640, margin: "0 auto", padding: 24 }}>
-      <h1>AI ショップ管理画面</h1>
+      <div className="title">
+        <h1>インバウンド向け和菓子</h1>
+      </div>
       <NavBar />
 
       <Routes>
