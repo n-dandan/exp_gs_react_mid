@@ -118,7 +118,7 @@ div{
 }
 
 label {
-  display: block;  改行させて入力欄の上に置く
+  display: block; /* 改行させて入力欄の上に置く */
   text-align: left;
   margin: 12px 0 4px;
   font-size: 14px;

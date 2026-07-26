@@ -4,16 +4,13 @@ import NavBar from "./components/NavBar";
 import DashboardPage from "./pages/DashboardPage";
 import GeneratePage from "./pages/GeneratePage";
 import EditPage from "./pages/EditPage";
-import "./App.css"; 
 
 function App() {
-  // ① 起動時：localStorage から読み込む（無ければ空配列）
   const [contents, setContents] = useState(() => {
     const saved = localStorage.getItem("contents");
     return saved ? JSON.parse(saved) : [];
   });
 
-  // ② contents が変わるたび：localStorage に保存する
   useEffect(() => {
     localStorage.setItem("contents", JSON.stringify(contents));
   }, [contents]);
@@ -22,22 +19,27 @@ function App() {
     setContents([newItem, ...contents]);
   }
 
-  // id の1件だけを、changes の内容で書き換える
   function updateContent(id, changes) {
     setContents(
       contents.map((c) => (c.id === id ? { ...c, ...changes } : c))
     );
   }
 
+  // 指定した id の要素を取り除く（filter は元の配列を変えずに新しい配列を返す）
+  function deleteContent(id) {
+    setContents(contents.filter((c) => c.id !== id));
+  }
+
   return (
     <div style={{ maxWidth: 640, margin: "0 auto", padding: 24 }}>
-      <div className="title">
-        <h1>インバウンド向け和菓子</h1>
-      </div>
+      <h1>AI ショップ管理画面</h1>
       <NavBar />
 
       <Routes>
-        <Route path="/" element={<DashboardPage contents={contents} />} />
+        <Route
+          path="/"
+          element={<DashboardPage contents={contents} onDelete={deleteContent} />}
+        />
         <Route path="/generate" element={<GeneratePage onAdd={addContent} />} />
         <Route
           path="/edit/:id"
